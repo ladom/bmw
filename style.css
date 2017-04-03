@@ -1,0 +1,35 @@
+#carousel {
+  margin: 0 auto;
+  max-width: 1200px;
+  max-height: 900px;
+  overflow: hidden; }
+  #carousel .carouselList {
+    width: 6000px; }
+    #carousel .carouselList li {
+      max-width: 1200px;
+      max-height: 900px;
+      float: left; }
+      #carousel .carouselList li img {
+        width: 100%;
+        height: auto; }
+
+#controls {
+  position: absolute;
+  top: 0;
+  line-height: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between; }
+  #controls div {
+    color: orange;
+    background-color: rgba(100, 0, 0, 0.5);
+    width: 50px;
+    text-align: center; }
+    #controls div i {
+      font-size: 40px;
+      line-height: 50px; }
+  #controls #arrowLeft {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px; }
+
+/*# sourceMappingURL=style.css.map */
