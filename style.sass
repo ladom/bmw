@@ -1,15 +1,15 @@
 #carousel
 	margin: 0 auto
 	max-width: 1200px
-	max-height: 900px
+	max-height: 675px
 	overflow: hidden
 
 	.carouselList
-		width: 6000px
+
 
 		li
 			max-width: 1200px
-			max-height: 900px
+			max-height: 675px
 			float: left
 
 			img
@@ -20,7 +20,7 @@
 	position: absolute
 	top: 0
 	line-height: 50%
-	
+	max-width: 1200px
 	height: 50px
 	display: flex
 	justify-content: space-between
@@ -31,10 +31,17 @@
 		width: 50px
 		text-align: center
 
+		&:hover
+			background-color: rgba(100, 0, 0, 0.8)
+
 		i
 			font-size: 40px
 			line-height: 50px
 
 	#arrowLeft
-		border-bottom-right-radius: 5px
-		border-top-right-radius: 5px
+		border-bottom-right-radius: 10px
+		border-top-right-radius: 10px
+
+	#arrowRight
+		border-bottom-left-radius: 10px
+		border-top-left-radius: 10px

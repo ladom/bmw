@@ -6,26 +6,32 @@ $(function(){
 		return $(window).width() * 0.9;
 	};
 
-	var ulLength = ulWidth() * imageList;
-	var topImageHeight = $('#carousel img').height() / 2;
+	var ulLength = function() {
+		return ulWidth() * imageList;
+	};
+
+	
+	var topImageHeight = function() {
+		return $('#carousel img').height() / 2.2;
+	};
+
+	
 
 console.log(topImageHeight);
 
-	$('#carousel').css({width: ulWidth});
-	$('#carousel ul').css({width: ulLength});
-	$('#carousel li').css({width: ulWidth});
-	$('#controls').css({width: ulWidth});
-	$('#controls').css({top: topImageHeight});
+	$('#carousel').css({width: ulWidth()});
+	$('#carousel ul').css({width: ulLength()});
+	$('#carousel li').css({width: ulWidth()});
+	$('#controls').css({width: ulWidth()});
+	$('#controls').css({top: topImageHeight()});
 
 	$(window).resize(function(){
-		var ulWidth1 = $(window).width() * 0.9;
-		var ulLength1 = ulWidth1 * imageList;
-		var topImageHeight1 = $('#carousel img').height() / 2;
-		$('#carousel').css({width: ulWidth1});
-		$('#carousel ul').css({width: ulLength1});
-		$('#carousel li').css({width: ulWidth1});
-		$('#controls').css({width: ulWidth1});
-		$('#controls').css({top: topImageHeight1});
+		
+		$('#carousel').css({width: ulWidth()});
+		$('#carousel ul').css({width: ulLength()});
+		$('#carousel li').css({width: ulWidth()});
+		$('#controls').css({width: ulWidth()});
+		$('#controls').css({top: topImageHeight()});
 	});
 
 	console.log($(window).width());
@@ -35,12 +41,35 @@ console.log(topImageHeight);
 
 $(function(){
 
-	setInterval(function(){
+	var startSlide = setInterval(function() {slideShow()}, 8000);
+
+	function slideShow() {
 		$("#carousel ul").animate({marginLeft:-$('#carousel li').width()},500,function(){
 			$(this).find("li:last").after($(this).find("li:first"));
 			$(this).css({marginLeft:0});
 		})
-	}, 5000);
+	};
 
-})
+	$('#arrowLeft').click(function() {
+		$("#carousel ul").animate({marginLeft:-$('#carousel li').width()},500,function(){
+			$(this).find("li:last").after($(this).find("li:first"));
+			$(this).css({marginLeft:0});
+		})
+	});
+		
+
+	$('#arrowRight').click(function() {
+		
+		$("#carousel ul").find("li:first").before($(this).find("li:last"));
+		$("#carousel ul").animate({marginRight: -$('#carousel li').width()}, 500, function(){
+			$("#carousel ul").find("li:first").before($(this).find("li:last"));
+			$(this).css({marginRight: 0});
+
+		})
+	})
+
+
+
+
+});
 
