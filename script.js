@@ -85,46 +85,12 @@ $(function() {
 		}
 	};
 	
-
-//	var a;
-//	$('#rings div:eq(' + a + ')').click(function() {
-//		console.log(a);
-//	});
-	
-
-
-
-/*	for (a = 0; a < rings.length; a++) {
-		rings[a].click(function() {
-console.log("kliknięte");
+	$('#rings').on('click', 'div', function() {
+		var a = $(this).index();
 			$(lista[index]).animate({opacity: 0}, 500);
 			$(rings[index]).animate({opacity: 0.4}, 500);
 			index = a;
 			$(lista[index]).animate({opacity: 1}, 500);
 			$(rings[index]).animate({opacity: 0.9}, 500);
-		})
-	}; */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	});
 })
