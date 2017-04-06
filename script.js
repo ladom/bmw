@@ -1,75 +1,130 @@
-$(function(){
+$(function() {
+	var lista = $('#slides img');
+	var listLength = lista.length - 1;
 
-	var imageList = $('#carousel li').length;
 
-	var ulWidth = function() {
+	var sliderWidth = function() {
 		return $(window).width() * 0.9;
 	};
 
-	var ulLength = function() {
-		return ulWidth() * imageList;
+	var sliderHeight = function() {
+		return $('#slides img').height();
 	};
-
 	
-	var topImageHeight = function() {
-		return $('#carousel img').height() / 2.2;
-	};
+	$(lista).css({width: sliderWidth()});
+	$('#carousel').css({width: sliderWidth()});
+	$('#controls').css({marginTop: sliderHeight() / 2.2});
+	$('#controls').css({width: sliderWidth()});
+	$('#rings').css({top: sliderHeight() - 25});
 
-	
-
-console.log(topImageHeight);
-
-	$('#carousel').css({width: ulWidth()});
-	$('#carousel ul').css({width: ulLength()});
-	$('#carousel li').css({width: ulWidth()});
-	$('#controls').css({width: ulWidth()});
-	$('#controls').css({top: topImageHeight()});
-
-	$(window).resize(function(){
-		
-		$('#carousel').css({width: ulWidth()});
-		$('#carousel ul').css({width: ulLength()});
-		$('#carousel li').css({width: ulWidth()});
-		$('#controls').css({width: ulWidth()});
-		$('#controls').css({top: topImageHeight()});
+	$(window).resize(function() {
+		$(lista).css({width: sliderWidth()});
+		$('#carousel').css({width: sliderWidth()});
+		$('#controls').css({marginTop: sliderHeight() / 2.2});
+		$('#controls').css({width: sliderWidth()});
+		$('#rings').css({top: sliderHeight() - 25});
 	});
 
-	console.log($(window).width());
-
-});
-
-
-$(function(){
-
+	
 	var startSlide = setInterval(function() {slideShow()}, 8000);
-
-	function slideShow() {
-		$("#carousel ul").animate({marginLeft:-$('#carousel li').width()},500,function(){
-			$(this).find("li:last").after($(this).find("li:first"));
-			$(this).css({marginLeft:0});
-		})
+	
+	for (var i = 0; i < lista.length; i++) {
+		$('#rings').append('<div></div>');
 	};
+	var rings = $('#rings div');
+	
 
-	$('#arrowLeft').click(function() {
-		$("#carousel ul").animate({marginLeft:-$('#carousel li').width()},500,function(){
-			$(this).find("li:last").after($(this).find("li:first"));
-			$(this).css({marginLeft:0});
-		})
-	});
-		
+	var index = 0;
+	$(rings[index]).css({opacity: 0.9});
 
 	$('#arrowRight').click(function() {
-		
-		$("#carousel ul").find("li:first").before($(this).find("li:last"));
-		$("#carousel ul").animate({marginRight: -$('#carousel li').width()}, 500, function(){
-			$("#carousel ul").find("li:first").before($(this).find("li:last"));
-			$(this).css({marginRight: 0});
+		if (index < listLength) {
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index += 1;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
+		} else {
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index = 0;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
+		}
+	});
 
+	$('#arrowLeft').click(function() {
+		if (index > 0) {
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index -= 1;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
+		} else {
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index = listLength;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
+		}
+	});
+
+	function slideShow() {
+		if (index < listLength) {
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index += 1;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
+		} else {
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index = 0;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
+		}
+	};
+	
+
+//	var a;
+//	$('#rings div:eq(' + a + ')').click(function() {
+//		console.log(a);
+//	});
+	
+
+
+
+/*	for (a = 0; a < rings.length; a++) {
+		rings[a].click(function() {
+console.log("kliknięte");
+			$(lista[index]).animate({opacity: 0}, 500);
+			$(rings[index]).animate({opacity: 0.4}, 500);
+			index = a;
+			$(lista[index]).animate({opacity: 1}, 500);
+			$(rings[index]).animate({opacity: 0.9}, 500);
 		})
-	})
+	}; */
 
 
 
 
-});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})

@@ -2,24 +2,26 @@
 	margin: 0 auto
 	max-width: 1200px
 	max-height: 675px
-	overflow: hidden
+	position: relative
+	width: 90vw
 
-	.carouselList
+	#slides
+		width: 100%
 
-
-		li
+		img
 			max-width: 1200px
 			max-height: 675px
-			float: left
+			position: absolute
+			top: 0
+			margin: 0 auto
+			opacity: 0
 
-			img
-				width: 100%
-				height: auto
+		img:first-child
+			opacity: 1
 
 #controls
 	position: absolute
 	top: 0
-	line-height: 50%
 	max-width: 1200px
 	height: 50px
 	display: flex
@@ -45,3 +47,22 @@
 	#arrowRight
 		border-bottom-left-radius: 10px
 		border-top-left-radius: 10px
+
+#rings
+	position: absolute
+	width: 100%
+	display: flex
+	justify-content: center
+	margin: 0 auto
+	height: 10px
+	max-width: 1200px
+
+	div
+		display: flex
+		height: 8px
+		width: 8px
+		border-radius: 50%
+		border: 1px solid #fff
+		background-color: rgba(255, 255, 255, 0.7)
+		opacity: 0.4
+		margin: 0 5px
