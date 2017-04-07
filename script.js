@@ -26,7 +26,7 @@ $(function() {
 	});
 
 	
-	var startSlide = setInterval(function() {slideShow()}, 8000);
+	var startSlide = setInterval(function() {slideShow()}, 5000);
 	
 	for (var i = 0; i < lista.length; i++) {
 		$('#rings').append('<div></div>');
@@ -41,15 +41,19 @@ $(function() {
 		if (index < listLength) {
 			$(lista[index]).animate({opacity: 0}, 500);
 			$(rings[index]).animate({opacity: 0.4}, 500);
+			clearInterval(startSlide);
 			index += 1;
 			$(lista[index]).animate({opacity: 1}, 500);
 			$(rings[index]).animate({opacity: 0.9}, 500);
+			startSlide = setInterval(function() {slideShow()}, 5000);
 		} else {
 			$(lista[index]).animate({opacity: 0}, 500);
 			$(rings[index]).animate({opacity: 0.4}, 500);
+			clearInterval(startSlide);
 			index = 0;
 			$(lista[index]).animate({opacity: 1}, 500);
 			$(rings[index]).animate({opacity: 0.9}, 500);
+			startSlide = setInterval(function() {slideShow()}, 5000);
 		}
 	});
 
@@ -57,15 +61,19 @@ $(function() {
 		if (index > 0) {
 			$(lista[index]).animate({opacity: 0}, 500);
 			$(rings[index]).animate({opacity: 0.4}, 500);
+			clearInterval(startSlide);
 			index -= 1;
 			$(lista[index]).animate({opacity: 1}, 500);
 			$(rings[index]).animate({opacity: 0.9}, 500);
+			startSlide = setInterval(function() {slideShow()}, 5000);
 		} else {
 			$(lista[index]).animate({opacity: 0}, 500);
 			$(rings[index]).animate({opacity: 0.4}, 500);
+			clearInterval(startSlide);
 			index = listLength;
 			$(lista[index]).animate({opacity: 1}, 500);
 			$(rings[index]).animate({opacity: 0.9}, 500);
+			startSlide = setInterval(function() {slideShow()}, 5000);
 		}
 	});
 
@@ -89,8 +97,10 @@ $(function() {
 		var a = $(this).index();
 			$(lista[index]).animate({opacity: 0}, 500);
 			$(rings[index]).animate({opacity: 0.4}, 500);
+			clearInterval(startSlide);
 			index = a;
 			$(lista[index]).animate({opacity: 1}, 500);
 			$(rings[index]).animate({opacity: 0.9}, 500);
+			startSlide = setInterval(function() {slideShow()}, 5000);
 	});
 })
